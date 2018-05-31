@@ -71,7 +71,7 @@ def compare_methods(names, m1, m2, m1_name="model1", m2_name="model2"):
     df = pd.DataFrame(results)
     return df.rename(index=row_names)
 
-results = compare_methods(classification_dataset_names[127:],
+results = compare_methods(classification_dataset_names,
                           LogisticRegression(),
                           GradientBoostingClassifier(),
                           m1_name="Logistic Regression",

@@ -1,5 +1,4 @@
 import numpy as np
-import seaborn as sb
 import pandas as pd
 
 from util import *
@@ -41,7 +40,7 @@ metafeatures = pd.read_pickle('sgt43_metafeatures.pkl')
 
 dataset_names = data['dataset'].unique()
 
-X = filter_dataframe_by_column(lambda x: isnan(x), metafeatures)
+X = filter_dataframe_by_column(lambda x: isnan(x), metafeatures).drop('Unnamed: 0', axis=1)
 y = pd.DataFrame(list((map_dict(lambda v: v[0], best_classifiers(data))).values()))
 
 

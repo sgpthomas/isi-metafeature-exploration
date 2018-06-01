@@ -4,8 +4,9 @@ import os
 import signal
 import numpy as np
 
-from progressbar import ProgressBar, Percentage, Bar, ETA
+# from progressbar import ProgressBar, Percentage, Bar, ETA
 import itertools
+from random import randint
 
 class TimeoutError(Exception):
     pass
@@ -76,3 +77,18 @@ def average(f, n_times):
     for n in range(n_times):
         res.append(f())
     return np.mean(res)
+
+def unique_values(l):
+    unique = []
+    for item in l:
+        if item not in unique:
+            unique.append(item)
+    return unique
+
+def randomize_labels(y):
+    unique = unique_values(y)
+    unique_n = len(unique)
+    res = []
+    for i in y:
+        res.append(unique[randint(0, unique_n-1)])
+    return np.array(res)
